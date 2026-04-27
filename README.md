@@ -9,13 +9,21 @@ The goal of this project is to develop and manage a robotic system using ROS2, i
 
 ## Repository Structure
 ros2_ws/
+
 └── src/
+
 ├── Sealbot/
+
 │ ├── README.md
+
 │ ├── seal_data_manager/
-│ └── ...
+
+│ └── (Will add additional files soon)
+
 ├── Prior_Data/
+
 │ └── README.md
+
 ├── citations.txt
 
 ---
