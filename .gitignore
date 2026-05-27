@@ -1,0 +1,24 @@
+# Ignore The following: 
+build/
+devel/
+install/
+logs/
+log/
+*.pyc
+__pycache__/
+*.bag
+*.bag.active
+*.db3
+*.mcap
+metadata.yaml
+bags/
+rosbags/
+recordings/
+data/
+*.avi
+*.h264
+.vscode/
+venv/
+
+# Force Prior Data ignore: 
+Prior_Data/

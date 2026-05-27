@@ -1,0 +1,29 @@
+launch:
+
+- node_container:
+    pkg: rclcpp_components
+    exec: component_container
+    name: apriltag_container
+    namespace: ""
+
+    composable_node:
+    - pkg: apriltag_ros
+      plugin: AprilTagNode
+      name: apriltag
+      namespace: apriltag
+      remap:
+    - from: image_rect
+      to: /zed2i/zed_node/left/gray/rect/image   # rectified grayscale (preferred for apriltag)
+      # OR
+      # to: /zed2i/zed_node/left/rgb/rect/image    # rectified color
+    - from: /camera/camera_info
+      to: /zed2i/zed_node/left/rgb/rect/camera_info
+      param:
+      - from: $(find-pkg-share apriltag_ros)/cfg/tags_25h9.yaml
+      extra_arg:
+      - name: use_intra_process_comms
+        value: "True"
+
+# The Zed Launch command is: 
+# - ros2 launch zed_wrapper zed_camera.launch.py camera_model:=zed2i
+# - Zed Expolorer: ZED_Explorer

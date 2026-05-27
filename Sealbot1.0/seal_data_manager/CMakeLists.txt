@@ -14,19 +14,21 @@ find_package(geometry_msgs REQUIRED)
 find_package(cv_bridge REQUIRED)
 find_package(OpenCV REQUIRED)
 find_package(image_transport REQUIRED)
+find_package(OpenCV REQUIRED)
 
 # Add executable
 add_executable(data_manager src/data_manager.cpp)
 
 
 # Link libraries
-ament_target_dependencies(data_manager
-  rclcpp
-  sensor_msgs
-  geometry_msgs
-  cv_bridge
-  OpenCV
-  image_transport
+target_link_libraries(data_manager PUBLIC
+  ${geometry_msgs_TARGETS}
+  ${sensor_msgs_TARGETS}
+  cv_bridge::cv_bridge
+  image_transport::image_transport
+  rclcpp::rclcpp
+  sensor_msgs::sensor_msgs_library
+  ${OpenCV_LIBS}
 )
 
 # Install
